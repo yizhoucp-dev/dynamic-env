@@ -31,8 +31,8 @@
 ![](media/17442605405965.jpg)
 
 ## 启动minikube
-# 可指定cpu、内存、k8s版本等
 ```shell
+# 可指定cpu、内存、k8s版本等
 minikube start --cpus=2 --memory=4196m --kubernetes-version=1.23.8
 ```
 ![](media/17442605542996.jpg)
@@ -51,6 +51,7 @@ helm install -n istio-system istiod -f local-istiod.yml ../../../charts/istio/is
 ```
 ## 部署ktenv相关组件
 ktenv 代码仓：https://github.com/yizhoucp-dev/ktenv
+
 参考文档：https://alibaba.github.io/virtual-environment/#/
 ```shell
 cd ktenv
