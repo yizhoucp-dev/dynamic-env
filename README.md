@@ -80,8 +80,11 @@ kubectl apply -n $NS -f VirtualEnvironment.yaml
 python demo 代码仓：https://github.com/yizhoucp-dev/python-env-demo
 ### 部署说明
 在部署的时候注入了环境变量 envMark 
+
 基础环境 envMark：dev
+
 动态环境 envMark：dev-yuyue123
+
 调用 /call_method 接口，会返回 envMark 的值，从而区分环境
 ![](media/17442640684435.jpg)
 
