@@ -1,12 +1,14 @@
 # 部署demo项目(单项目)
 
 ## 说明
-本文介绍单项目的 Http 调用和单项目的消息队列(自产自消)，如下图所示
+本文介绍单项目的 Http 调用和单项目的消息队列(自产自销)，如下图所示
 ### Http 请求示意图
-![](media/17470679979204.jpg)
+![](media/17471141866837.jpg)
 
-### 消息队列(自产自消)示意图
-![](media/17470681049931.jpg)
+
+### 消息队列(自产自销)示意图
+![](media/17471142142307.jpg)
+
 
 ## 部署所需的中间件
 
@@ -76,7 +78,7 @@ kubectl logs -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=pyt
 ![](media/17471137713835.jpg)
 
 
-#### yuyue123环境自产自消
+#### yuyue123环境自产自销
 ```shell
 # 进入pod
 kubectl exec -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=python-env-demo-dev | grep 'python-env-demo' | awk '{print $1}') -it -- sh 
