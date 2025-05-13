@@ -58,7 +58,7 @@ curl http://python-env-demo-dev.demo/call_method && echo ''
 ## java-demo
 配置代码仓：https://github.com/yizhoucp-dev/demo-helm-config
 
-java demo 代码仓：https://github.com/yizhoucp-dev/java-env-demo
+java demo 代码仓：https://github.com/yizhoucp-dev/java-dynamic-env-demo/tree/main/dynamic-env-demo-github
 
 ### 部署说明
 在部署的时候注入了环境变量 envMark 
@@ -112,4 +112,21 @@ kubectl logs -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=jav
 ```
 ![](media/17470705422310.jpg)
 
+#### yuyue123环境自产自消
+```shell
+# 进入pod
+kubectl exec -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=java-env-demo-dev | grep 'java-env-demo' | awk '{print $1}') -it -- sh 
+# 加请求头调用生产环境的接口，会打到yuyue123环境，yuyue123环境自产自消
+curl -H "ali-env-mark: dev-yuyue123" http://java-env-demo-dev.demo/api/send-kafka-message?message=text
+```
+```shell
+# 查看基础环境日志
+kubectl logs -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=java-env-demo-dev | grep 'java-env-demo' | awk '{print $1}') -f
+```
+![](media/17471082948865.jpg)
 
+```shell
+# 查看yuyue123环境日志
+kubectl logs -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=java-env-demo-dev-yuyue123 | grep 'java-env-demo' | awk '{print $1}') -f
+```
+![](media/17471082634093.jpg)
