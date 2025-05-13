@@ -1,11 +1,11 @@
 # 部署demo项目(单项目)
 
 ## 说明
-本文介绍单项目的 Http 调用和单项目的消息队列(自产自销)，如下图所示
+本文介绍单项目的 Http 调用和单项目的消息队列(自产自消)，如下图所示
 ### Http 请求示意图
 ![](media/17470679979204.jpg)
 
-### 消息队列(自产自销)示意图
+### 消息队列(自产自消)示意图
 ![](media/17470681049931.jpg)
 
 ## 部署所需的中间件
@@ -54,6 +54,48 @@ curl http://python-env-demo-dev.demo/call_method && echo ''
 
 ### MQ 消息(kafka)
 
+#### 基础环境自产自消
+```shell
+# 进入pod
+kubectl exec -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=python-env-demo-dev | grep 'python-env-demo' | awk '{print $1}') -it -- sh 
+# 不加请求头调用生产环境的接口，会打到基础环境，基础环境自产自消
+curl http://python-env-demo-dev.demo/send_kafka_msg && echo ''
+```
+![](media/17471136128531.jpg)
+
+```shell
+# 查看基础环境日志
+kubectl logs -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=python-env-demo-dev | grep 'python' | awk '{print $1}') -f
+```
+![](media/17471137513333.jpg)
+
+```shell
+# 查看yuyue123环境日志
+kubectl logs -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=python-env-demo-dev-yuyue123 | grep 'python' | awk '{print $1}') -f
+```
+![](media/17471137713835.jpg)
+
+
+#### yuyue123环境自产自消
+```shell
+# 进入pod
+kubectl exec -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=python-env-demo-dev | grep 'python-env-demo' | awk '{print $1}') -it -- sh 
+# 加请求头调用生产环境的接口，会打到yuyue123环境，yuyue123环境自产自消
+curl -H "ali-env-mark: dev-yuyue123" http://python-env-demo-dev.demo/send_kafka_msg && echo ''
+```
+![](media/17471135958371.jpg)
+
+```shell
+# 查看基础环境日志
+kubectl logs -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=python-env-demo-dev | grep 'python' | awk '{print $1}') -f
+```
+![](media/17471138147738.jpg)
+
+```shell
+# 查看yuyue123环境日志
+kubectl logs -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=python-env-demo-dev-yuyue123 | grep 'python' | awk '{print $1}') -f
+```
+![](media/17471139492093.jpg)
 
 ## java-demo
 配置代码仓：https://github.com/yizhoucp-dev/demo-helm-config
