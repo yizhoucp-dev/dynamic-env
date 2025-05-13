@@ -1,12 +1,12 @@
 # 部署demo项目(单项目)
 
 ## 说明
-本文介绍单项目的 Http 调用和单项目的消息队列(自产自销)，如下图所示
+本文介绍单项目的 Http 调用和单项目的消息队列(自产自消)，如下图所示
 ### Http 请求示意图
 ![](media/17471141866837.jpg)
 
 
-### 消息队列(自产自销)示意图
+### 消息队列(自产自消)示意图
 ![](media/17471142142307.jpg)
 
 
@@ -19,7 +19,7 @@ cd helm-devops/values/kafka/local
 helm install -n kafka kafka -f local.yml ../../../charts/kafka/kafka-v3
 ```
 
-## python-demo
+## Python-demo
 配置代码仓：https://github.com/yizhoucp-dev/demo-helm-config
 
 python demo 代码仓：https://github.com/yizhoucp-dev/python-env-demo
@@ -42,7 +42,7 @@ cd demo-helm-config/demo-values/dev-yuyue123 && helm install -n demo python-env-
 ```
 查看 pod name
 ![](../media/17442637568369.jpg)
-### http消息
+### Http消息
 ```shell
 # 进入 pod 使用命令行测试
 kubectl exec -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=python-env-demo-dev | grep 'python-env-demo' | awk '{print $1}') -it -- sh 
@@ -78,7 +78,7 @@ kubectl logs -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=pyt
 ![](media/17471137713835.jpg)
 
 
-#### yuyue123环境自产自销
+#### yuyue123环境自产自消
 ```shell
 # 进入pod
 kubectl exec -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=python-env-demo-dev | grep 'python-env-demo' | awk '{print $1}') -it -- sh 
@@ -99,7 +99,7 @@ kubectl logs -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=pyt
 ```
 ![](media/17471139492093.jpg)
 
-## java-demo
+## Java-demo
 配置代码仓：https://github.com/yizhoucp-dev/demo-helm-config
 
 java demo 代码仓：https://github.com/yizhoucp-dev/java-dynamic-env-demo/tree/main/dynamic-env-demo-github
@@ -124,7 +124,7 @@ cd demo-helm-config/demo-values/dev-yuyue123 && helm install -n demo java-env-de
 查看 pod name
 ![](media/17470669664906.jpg)
 
-### http消息
+### Http消息
 ```shell
 # 进入 pod 使用命令行测试
 kubectl exec -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=java-env-demo-dev | grep 'java-env-demo' | awk '{print $1}') -it -- sh 
