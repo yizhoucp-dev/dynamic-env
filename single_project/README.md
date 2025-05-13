@@ -61,7 +61,7 @@ curl http://python-env-demo-dev.demo/call_method && echo ''
 ```shell
 # 进入pod
 kubectl exec -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=python-env-demo-dev | grep 'python-env-demo' | awk '{print $1}') -it -- sh 
-# 不加请求头调用生产环境的接口，会打到基础环境，基础环境自产自消
+# 不加请求头调用接口，会打到基础环境，基础环境自产自消
 curl http://python-env-demo-dev.demo/send_kafka_msg && echo ''
 ```
 ![](media/17471136128531.jpg)
@@ -83,7 +83,7 @@ kubectl logs -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=pyt
 ```shell
 # 进入pod
 kubectl exec -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=python-env-demo-dev | grep 'python-env-demo' | awk '{print $1}') -it -- sh 
-# 加请求头调用生产环境的接口，会打到yuyue123环境，yuyue123环境自产自消
+# 加请求头调用接口，会打到yuyue123环境，yuyue123环境自产自消
 curl -H "ali-env-mark: dev-yuyue123" http://python-env-demo-dev.demo/send_kafka_msg && echo ''
 ```
 ![](media/17471135958371.jpg)
