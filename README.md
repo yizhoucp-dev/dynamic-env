@@ -47,7 +47,7 @@ minikube start --cpus=6 --memory=7500m --kubernetes-version=1.23.8
 使用 kubectl 验证
 ![](media/17442605624459.jpg)
 
-## 设置
+### 设置镜像仓配置
 ```shell
 minikube ssh  # 进入 Minikube 虚拟机
 
