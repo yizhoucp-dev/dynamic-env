@@ -30,6 +30,8 @@
 # 部署基本环境
 ## 启动 docker 桌面版
 ![](media/17442605405965.jpg)
+### 设置 docker 可用的 CPU、内存 等
+![](media/17479182438637.jpg)
 
 ## 启动 registry 作为镜像仓
 ```shell
