@@ -74,7 +74,7 @@ exit
 
 ## 部署istio
 helm-devops 代码仓：https://github.com/yizhoucp-dev/helm-devops
-```
+```shell
 cd helm-devops/values/istio/local
 
 kubectl create namespace istio-system

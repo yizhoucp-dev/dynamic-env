@@ -15,7 +15,7 @@ A服务生产消息，B服务消费消息
 ```shell
 kubectl create namespace nacos
 cd helm-devops/values/nacos/local
-helm install -n nacos nacos -f local.yml ../../../charts/nacos/nacos-v1
+helm install -n nacos nacos -f local.yml ../../../charts/nacos/nacos-v2
 ```
 
 ### 部署 Redis
