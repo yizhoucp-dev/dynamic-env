@@ -239,6 +239,7 @@ helm uninstall -n demo dynamic-env-kafka-demo-consumer-dev-yuyue123
 ```
 
 ```shell
+# 等待 30 秒重新调用一次
 # 加 ali-env-mark 请求头，打到 yuyue123 环境
 curl -H "ali-env-mark: dev-yuyue123" -H "Content-Type: application/json" -d '{"data": "text-yuyue123"}' dynamic-env-kafka-demo-producer-dev:80/api/test/send-kafka-msg && echo ''
 ```
