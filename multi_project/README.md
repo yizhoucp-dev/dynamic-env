@@ -115,7 +115,7 @@ curl -H "ali-env-mark: dev-yuyue123" open-feign-test-source:80/api/get-remote-he
 # 查看发起端 open-feign-test-source-dev-yuyue123 服务日志
 kubectl logs -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=open-feign-test-source-dev-yuyue123 | grep 'open-feign-test-source' | awk '{print $1}') -f
 ```
-![](media/17476182288434.jpg)
+![](media/17479832565748.jpg)
 
 ```shell
 # 查看接受端 open-feign-test-dev-yuyue123 服务日志
@@ -144,7 +144,7 @@ curl -H "ali-env-mark: dev-yuyue123" open-feign-test-source:80/api/get-remote-he
 # 查看发起端 open-feign-test-source-dev-yuyue123 服务日志
 kubectl logs -n demo $(kubectl get pod -n demo -l app.kubernetes.io/instance=open-feign-test-source-dev-yuyue123 | grep 'open-feign-test-source' | awk '{print $1}') -f
 ```
-![](media/17476182288434.jpg)
+![](media/17479832565748.jpg)
 
 ```shell
 # 查看接受端 open-feign-test-dev(基础环境) 服务日志
