@@ -50,7 +50,11 @@ cd demo-helm-config/demo-values/dev && helm install -n demo python-env-demo-dev 
 # 部署动态环境(yuyue123)
 cd demo-helm-config/demo-values/dev-yuyue123 && helm install -n demo python-env-demo-dev-yuyue123 -f python-env-demo.yaml ../../demo-project-charts
 ```
-查看 pod name
+
+```shell
+# 查看 pod name
+kubectl get pod -n demo | grep python-env-demo
+```
 ![](media/17442637568369.jpg)
 ### Http消息
 ```shell

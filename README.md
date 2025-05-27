@@ -42,7 +42,7 @@ docker run -d -p 5000:5000 --restart always --name registry registry:2.8
 ```shell
 # 可指定cpu、内存、k8s版本等
 minikube start --cpus=6 --memory=7500m --kubernetes-version=1.23.8
-```l6
+```
 ![](media/17442605542996.jpg)
 使用 kubectl 验证
 ![](media/17442605624459.jpg)
